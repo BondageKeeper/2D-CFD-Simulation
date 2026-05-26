@@ -41,7 +41,7 @@ Then it calculates Poisson Equation to obtain new pressure field - and this is n
 components and direct them to the places where there is lack of pressure(that procedure makes our flow avoid some obstacles and behave naturally).
 Eventually we see beatiful interface with displayed flow where magnitude of speed is shown by rgba differences.
 
-## 📷Second_preview:
+## 📷Second preview:
 ![Simulation Conclusion](conclusion.gif)   
 
 ## 🔧 Running the project:
