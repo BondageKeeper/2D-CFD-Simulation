@@ -9,23 +9,23 @@ interesting fields for me.
 ![Simulation Intro](intro.gif)
 
 ## 🛠️ Used tools(crucial libraries):
-**tkinter** - Adjusts user window scale. 
-**numba** - Used for JIT compilation to accelerate mathematical loops.
-**numpy** - Handled heavy multi-dimensional array operations.
-**DearPyGui** - Represents the main Graphical User Interface (GUI).
-**openCV(cv2)** - Utilized for image processing and matrix transformations.
-**pandas** - Managed and structured simulation history data. 
-**psutil** - Monitored hardware (CPU data and disk storage availability).
-**faker** - Generated randomized filenames for saving configurations.
-**time** - Simply to calculate time
+* **tkinter** - Adjusts user window scale. 
+* **numba** - Used for JIT compilation to accelerate mathematical loops.
+* **numpy** - Handled heavy multi-dimensional array operations.
+* **DearPyGui** - Represents the main Graphical User Interface (GUI).
+* **openCV(cv2)** - Utilized for image processing and matrix transformations.
+* **pandas** - Managed and structured simulation history data. 
+* **psutil** - Monitored hardware (CPU data and disk storage availability).
+* **faker** - Generated randomized filenames for saving configurations.
+* **time** - Simply to calculate time
 
 ## ⚡ Features:
-**fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
-**displayed graphics of important coefficients such as pressure , lift , drag coefficients
-**aerodynamic quality of airfoil becomes almost similar to the real(empirical) quality after approximately 7000 fps
-**user can pause a simulation at any moment or delete and upload another image of airfoil
-**user also can save complete history of data as CSV file
-**user can change some configurations such as angle of attack or input velocity by using sliders
+* **fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
+* **displayed graphics of important coefficients such as pressure , lift , drag coefficients
+* **aerodynamic quality of airfoil becomes almost similar to the real(empirical) quality after approximately 7000 fps
+* **user can pause a simulation at any moment or delete and upload another image of airfoil
+* **user also can save complete history of data as CSV file
+* **user can change some configurations such as angle of attack or input velocity by using sliders
  
 ## 🧠 Highlighted key concepts:
 * numba compilators were used in order to obtain swift calculations
