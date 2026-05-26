@@ -1,4 +1,4 @@
-# 2D-CFD-solver
+# CFD-2D-solver
 
 ## Introduction:
 I started doing this project because I read a book "Fundamentals of Aerodynamics" which is written by Anderson and this book a lot of times 
