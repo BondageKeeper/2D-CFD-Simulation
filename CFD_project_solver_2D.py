@@ -48,43 +48,46 @@ def image_callback_data(_,file_data):
 
 def update_configurations():
     global emitted_function , u_uniform , viscosity , u_mesh , v_mesh , nx , ny , u , v , p , texture_data ,mask , image
-    u_uniform = float(dpg.get_value('velocity_configuration'))
-    viscosity = float(dpg.get_value('viscosity_configuration'))
-    u_mesh = float(dpg.get_value('speed_mesh_X_configuration'))
-    v_mesh = float(dpg.get_value('speed_mesh_Y_configuration'))
-    angle = float(dpg.get_value('angle_of_attack_configuration'))
-    u = np.zeros((ny, nx), dtype=np.float32)
-    v = np.zeros((ny, nx), dtype=np.float32)
-    p = np.zeros((ny, nx), dtype=np.float32)
-    texture_data = np.zeros(ny * nx * 4, dtype=np.float32)
+    if not is_paused:
+        dpg.set_value('warning', value='')
+        u_uniform = float(dpg.get_value('velocity_configuration'))
+        viscosity = float(dpg.get_value('viscosity_configuration'))
+        u_mesh = float(dpg.get_value('speed_mesh_X_configuration'))
+        v_mesh = float(dpg.get_value('speed_mesh_Y_configuration'))
+        angle = float(dpg.get_value('angle_of_attack_configuration'))
+        u = np.zeros((ny, nx), dtype=np.float32)
+        v = np.zeros((ny, nx), dtype=np.float32)
+        p = np.zeros((ny, nx), dtype=np.float32)
+        texture_data = np.zeros(ny * nx * 4, dtype=np.float32)
 
-    if image is not None:
-        img_h, img_w = image.shape
-        center = (nx // 2 , ny // 2)
-        rotation_matrix = cv2.getRotationMatrix2D(center,-angle,1.0)
-        rotated_image = cv2.warpAffine(image,rotation_matrix,(img_w,img_h),flags = cv2.INTER_LINEAR,
-                                       borderMode=cv2.BORDER_CONSTANT,borderValue=255)
-        _ , binary_value = cv2.threshold(rotated_image,0,1,cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        if np.sum(binary_value) >= (nx * ny) // 2:
-            binary_value = 1 - binary_value
-        full_mask = np.zeros((ny,nx),dtype=bool)
-        full_mask[10:ny - 10,:] = binary_value.astype(np.bool)
-        mask = full_mask
-    if dpg.does_item_exist('fluid_texture'):
-        dpg.set_value('fluid_texture',list(texture_data))
-    dpg.set_value('series_cp_upper',[[],[]])
-    dpg.set_value('series_cp_lower',[[],[]])
-    dpg.set_value('series_cl_lift',[[],[]])
-    dpg.set_value('series_cd_drag',[[],[]])
-    dpg.fit_axis_data("X_axis_pressure")
-    dpg.fit_axis_data("Y_axis_pressure")
-    dpg.fit_axis_data("X_axis_lift")
-    dpg.fit_axis_data("Y_axis_lift")
-    dpg.fit_axis_data("X_axis_drag")
-    dpg.fit_axis_data("Y_axis_drag")
-    emitted_function = True
-    is_paused = False
-    return u_uniform , viscosity , u_mesh , v_mesh
+        if image is not None:
+            img_h, img_w = image.shape
+            center = (nx // 2 , ny // 2)
+            rotation_matrix = cv2.getRotationMatrix2D(center,-angle,1.0)
+            rotated_image = cv2.warpAffine(image,rotation_matrix,(img_w,img_h),flags = cv2.INTER_LINEAR,
+                                           borderMode=cv2.BORDER_CONSTANT,borderValue=255)
+            _ , binary_value = cv2.threshold(rotated_image,0,1,cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            if np.sum(binary_value) >= (nx * ny) // 2:
+                binary_value = 1 - binary_value
+            full_mask = np.zeros((ny,nx),dtype=bool)
+            full_mask[10:ny - 10,:] = binary_value.astype(np.bool)
+            mask = full_mask
+        if dpg.does_item_exist('fluid_texture'):
+            dpg.set_value('fluid_texture',list(texture_data))
+        dpg.set_value('series_cp_upper',[[],[]])
+        dpg.set_value('series_cp_lower',[[],[]])
+        dpg.set_value('series_cl_lift',[[],[]])
+        dpg.set_value('series_cd_drag',[[],[]])
+        dpg.fit_axis_data("X_axis_pressure")
+        dpg.fit_axis_data("Y_axis_pressure")
+        dpg.fit_axis_data("X_axis_lift")
+        dpg.fit_axis_data("Y_axis_lift")
+        dpg.fit_axis_data("X_axis_drag")
+        dpg.fit_axis_data("Y_axis_drag")
+        emitted_function = True
+        return u_uniform , viscosity , u_mesh , v_mesh
+    else:
+        dpg.set_value('warning', value=' [You cannot apply configurations while simulation is paused] ')
 
 @njit(parallel=True,fastmath=True)
 def computational_system(mask,u,v,p,texture_data,u_uniform,viscosity,u_mesh,v_mesh,nx,ny):
