@@ -5,7 +5,7 @@ I started doing this project because I read a book "Fundamentals of Aerodynamics
 mentioned CFD(computational fluid dynamics) so that is why I did it - just to combine physics with coding which are both very
 interesting fields for me.
 
-## 📷Previews:
+## 📷Preview:
 ![Simulation Intro](intro.gif)
 
 ## 🛠️ Used tools(crucial libraries):
@@ -20,12 +20,12 @@ interesting fields for me.
 * **time** - Simply to calculate time
 
 ## ⚡ Features:
-* **fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
-* **displayed graphics of important coefficients such as pressure , lift , drag coefficients
-* **aerodynamic quality of airfoil becomes almost similar to the real(empirical) quality after approximately 7000 fps
-* **user can pause a simulation at any moment or delete and upload another image of airfoil
-* **user also can save complete history of data as CSV file
-* **user can change some configurations such as angle of attack or input velocity by using sliders
+* fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
+* displayed graphics of important coefficients such as pressure , lift , drag coefficients
+* aerodynamic quality of airfoil becomes almost similar to the real(empirical) quality after approximately 7000 fps
+* user can pause a simulation at any moment or delete and upload another image of airfoil
+* user also can save complete history of data as CSV file
+* user can change some configurations such as angle of attack or input velocity by using sliders
  
 ## 🧠 Highlighted key concepts:
 * numba compilators were used in order to obtain swift calculations
