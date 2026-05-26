@@ -206,6 +206,11 @@ def save_as_csv():
         if free_gb < 1:
             dpg.set_value('warning',value='There is no free memory on your disk')
         else:
+            print(len(history_cl))
+            print(len(history_cd))
+            print(len(history_fps))
+            print(len(time_history)) #626
+            print(len(quality_history)) #626
             dpg.set_value('warning', value='')
             df = pd.DataFrame({
                 'Lift coefficient' : history_cl,
@@ -381,6 +386,8 @@ while dpg.is_dearpygui_running():
             history_cl.clear()
             history_cd.clear()
             history_fps.clear()
+            time_history.clear()
+            quality_history.clear()
             fps_counter = 0
             x_coords = []
             cp_upper = []
@@ -448,7 +455,10 @@ while dpg.is_dearpygui_running():
             history_cl.append(c_lift)
             history_cd.append(c_drag)
             history_fps.append(fps_counter)
-            aerodynamic_quality = round(c_lift / c_drag,3)
+            if c_drag == 0:
+                aerodynamic_quality = 0.0
+            else:
+                aerodynamic_quality = round(c_lift / c_drag, 3)
             quality_history.append(aerodynamic_quality)
 
         cpu_value = psutil.cpu_percent(interval=None)
