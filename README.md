@@ -1,0 +1,60 @@
+# 2D-CFD-solver
+
+Introduction:
+I started doing this project because I read a book "Fundamentals of Aerodynamics" which is written by Anderson and this book a lot of times 
+mentioned CFD(computational fluid dynamics) so that is why I did it - just to combine physics with coding which are both very
+interesting fields for me.
+
+Used tools(crucial libraries):
+* tkinter 
+* numba
+* numpy
+* dearpygui(represents GUI)
+* openCV(cv2)
+* pandas 
+* psutil
+* faker
+
+Features:
+* fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
+* displayed graphics of important coefficients such as pressure , lift , drag coefficients
+* aerodynamic quality of airfoil becomes almost similar to the real(empirical) quality after approximately 7000 fps
+* user can pause a simulation at any point or delete and upload another airfoil
+* user also can save complete history of data as CSV file
+* user can change some configurations such as angle of attack ot input velocity by using sliders
+ 
+Highlighted key concepts:
+* numba compilators were used in order to obtain swift calculations
+* finite numerical methods were applied for solving partial differential equations
+* cv2 was used for getting a desirable body from uploaded photo
+* method cv2.warpAffine helped to rotate massibe by converting orthogonal coordinates into polar coordinates
+* library psutil was applied in order to get CPU data and check memory on user disk
+
+The sequence of process itself:
+As user uploads 2D picture(say airfoil) code automatically starts creating a mask for image and after that computational part starts where 
+advection and diffusion are being calculated. After code has u_new and v_new and calculates divergence(simply time rate of change of volume).
+Then it calculates Poisson Equation to obtain new pressure field - and this is needed to calculate Euler Equation which allows to change velocity
+components and direct them to the places where there is lack of pressure(that procedure makes our flow avoid some obstacles and behave naturally).
+Eventually we see beatiful interface with displayed flow where magnitude of speed is shown by rgba differences.
+
+Running the project:
+* clone file where code is loaded
+* just put this code into pycharm or visual studio and run it! (don't forget to install all libraries)
+
+Conclusion:
+Honestly say it was very complicated to create such a project because it relyes on partial differential equations which 
+I started studying just recently. Nevertheless I don't regret that I started doing this project cause I found out lot's of the new methods for working 
+with massives and learned how to use a numba compilator normally. There might be still some bags in the code but it accomplishes its plannes function. 
+In the end I would like to say that CFD is REALLY difficult to understand and write but if your try to do you best - you will write succesfully!
+
+
+
+
+
+
+
+
+
+
+
+
