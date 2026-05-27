@@ -49,7 +49,7 @@ Eventually we see beatiful interface with displayed flow where magnitude of spee
 ### Prerequisites
 Make sure you have Python Installed. Then, install the required libraries:
 ```bash
-pip install numba numpy psutil opencv dearpygui pandas faker
+pip install numba numpy psutil opencv-python dearpygui pandas faker
 ```
 ### Execution
 1) Clone this repository or download the `CFD_project_solver_2D.py` file.
