@@ -13,11 +13,11 @@ interesting fields for me.
 * **numba** - Used for JIT compilation to accelerate mathematical loops.
 * **numpy** - Handled heavy multi-dimensional array operations.
 * **DearPyGui** - Represents the main Graphical User Interface (GUI).
-* **openCV(cv2)** - Utilized for image processing and matrix transformations.
+* **opencv(cv2)** - Utilized for image processing and matrix transformations.
 * **pandas** - Managed and structured simulation history data. 
 * **psutil** - Monitored hardware (CPU data and disk storage availability).
 * **faker** - Generated randomized filenames for saving configurations.
-* **time** - Simply to calculate time
+* **time** - Simply to calculate time.
 
 ## ⚡ Features:
 * fully-fledged 2D flow solver for airfoils or other 2D subjects based on physical formulas
@@ -45,13 +45,23 @@ Eventually we see beatiful interface with displayed flow where magnitude of spee
 ![Simulation Conclusion](conclusion.gif)   
 
 ## 🔧 Running the project:
-* clone file where code is loaded
-* just put this code into pycharm or visual studio and run it! (don't forget to install all libraries)
+
+### Prerequisites
+Make sure you have Python Installed. Then, install the required libraries:
+```bash
+pip install numba numpy psutil opencv dearpygui pandas faker
+```
+###Execution
+1) Clone this repository or download the `CFD_project_solver_2D.py` file.
+2) Run the script using your IDE (PyCharm / Visual Studio Code) or directly via terminal:
+```bash
+python CFD_project_solver_2D.py
+```
 
 ## 🎯 Conclusion:
-Honestly say it was very complicated to create such a project because it relyes on partial differential equations which 
+Honestly say it was very complicated to create such a project because it relies on partial differential equations which 
 I started studying just recently. Nevertheless I don't regret that I started doing this project cause I found out lot's of the new methods for working 
-with massives and learned how to use a numba compilator normally. There might be still some bags in the code but it accomplishes its planned function. 
+with arrays and learned how to use a numba compilator normally. There might be still some bugs in the code but it accomplishes its planned function. 
 In the end I would like to say that CFD is REALLY difficult to understand and write but if your try to do you best - you will write succesfully!
 
 
