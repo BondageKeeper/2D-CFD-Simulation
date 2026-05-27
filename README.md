@@ -51,7 +51,7 @@ Make sure you have Python Installed. Then, install the required libraries:
 ```bash
 pip install numba numpy psutil opencv dearpygui pandas faker
 ```
-###Execution
+### Execution
 1) Clone this repository or download the `CFD_project_solver_2D.py` file.
 2) Run the script using your IDE (PyCharm / Visual Studio Code) or directly via terminal:
 ```bash
